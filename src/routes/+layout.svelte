@@ -12,16 +12,10 @@
   <link rel="icon" href={favicon} />
 </svelte:head>
 
-<img
-  src="https://images.unsplash.com/photo-1655841439659-0afc60676b70?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  alt="Background"
-  class="fixed inset-0 w-full h-full object-cover z-[-100]"
-/>
-
 <div class="drawer">
   <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
   <div class="drawer-content flex flex-col">
-    <div class="navbar bg-base-300/80 w-full backdrop-blur-md">
+    <div class="navbar bg-base-300/80 w-full backdrop-blur-md shadow-[0_1px_1px_0_rgba(0,0,0,0.25)]">
       <div class="flex-none lg:hidden">
         <label
           for="my-drawer-3"
