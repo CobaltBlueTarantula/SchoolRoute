@@ -23,12 +23,9 @@
       selectedSchool = found;
     }
   }
-  
-  $inspect(selectedSchool);
-  $inspect(selectedRoute);
 </script>
 
-<div class="flex flex-col md:flex-row w-full">
+<div class="flex flex-col md:flex-row w-full pt-20">
   <section class="md:w-1/3 h-76">
     <div class="mb-10 shadow-sm drop-shadow-2xl m-4 md:m-8 p-6 md:p-10 card bg-base-100">
       <h1 class="font-semibold text-2xl pb-6">Public Transport Services</h1>
