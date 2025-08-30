@@ -38,7 +38,7 @@
           </svg>
         </label>
       </div>
-      <div class="mx-2 flex-1 px-2 text-3xl">School Route</div>
+      <div class="mx-2 flex-1 px-2 text-3xl">SchoolRoute</div>
       <div class="hidden flex-none sm:block">
         <ul class="menu menu-horizontal">
           <NavbarContents isList={false}/>
