@@ -12,7 +12,7 @@
   <link rel="icon" href={favicon} />
 </svelte:head>
 
-<div class="drawer fixed top-0 z-500">
+<div class="drawer">
   <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
   <div class="drawer-content flex flex-col">
     <div class="w-full h-20 absolute top-0 left-0 z-50 bg-base-100/70 backdrop-blur-xl shadow-[0_0_2px_0_rgba(0,0,0,0.35)]"></div>
@@ -39,7 +39,7 @@
         </label>
       </div>
       <div class="mx-2 flex-1 px-2 font-semibold text-2xl">SchoolRoute</div>
-      <div class="hidden flex-none lg:block">
+      <div class="hidden flex-none sm:block">
         <ul class="menu menu-horizontal">
           <NavbarContents isList={false}/>
         </ul>

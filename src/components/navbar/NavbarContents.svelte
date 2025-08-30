@@ -5,12 +5,13 @@
   const tabs = [
     { name: 'Home', href: '/' },
     { name: 'Schools', href: '/schools' },
-    { name: 'Transport', href: '/transport' }
+    { name: 'Transport', href: '/transport' },
+    { name: 'About', href: '/about' }
   ];
 </script>
 
 {#if isList}
-  <ul class="menu menu-md bg-base-100 w-56 p-2 rounded-box">
+  <ul class="menu menu-md bg-base-100 w-56 p-2 rounded-box mt-22">
     {#each tabs as tab}
       <li class:active={$page.url.pathname === tab.href}>
         <a href={tab.href}>{tab.name}</a>
