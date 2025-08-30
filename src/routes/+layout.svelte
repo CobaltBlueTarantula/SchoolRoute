@@ -16,7 +16,7 @@
   <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
   <div class="drawer-content flex flex-col">
     <div class="navbar bg-base-300/80 w-full backdrop-blur-md shadow-[0_1px_1px_0_rgba(0,0,0,0.25)]">
-      <div class="flex-none lg:hidden">
+      <div class="flex-none sm:hidden">
         <label
           for="my-drawer-3"
           aria-label="open sidebar"
@@ -37,20 +37,19 @@
           </svg>
         </label>
       </div>
-      <div class="mx-2 flex-1 px-2">Navbar Title</div>
-      <div class="hidden flex-none lg:block">
+      <div class="mx-2 flex-1 px-2 text-3xl">School Route</div>
+      <div class="hidden flex-none sm:block">
         <ul class="menu menu-horizontal">
-          <NavbarContents />
+          <NavbarContents isList={false}/>
         </ul>
       </div>
       <ThemeSwitcher />
     </div>
   </div>
   <div class="drawer-side">
-    <label for="my-drawer-3" aria-label="close sidebar" class="drawer-overlay"
-    ></label>
-    <ul class="menu bg-base-200 min-h-full w-80 p-4">
-      <NavbarContents />
+    <label for="my-drawer-3" aria-label="close sidebar" class="drawer-overlay"></label>
+    <ul class="menu bg-base-200 min-h-full w-70 p-4">
+      <NavbarContents isList={true}/>
     </ul>
   </div>
 </div>
