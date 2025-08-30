@@ -35,11 +35,11 @@
     
     const markers = L.markerClusterGroup();
 
-    // schools.forEach(school => {
-    //   const marker = L.marker([school.geo_point.lat, school.geo_point.lon])
-    //     .bindPopup(school.name);
-    //   markers.addLayer(marker);
-    // });
+    schools.forEach(school => {
+      const marker = L.marker([school.geo_point.lat, school.geo_point.lon])
+        .bindPopup(school.name);
+      markers.addLayer(marker);
+    });
 
     map.addLayer(markers);
 
