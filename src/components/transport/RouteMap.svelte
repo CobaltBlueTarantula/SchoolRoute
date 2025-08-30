@@ -1,66 +1,58 @@
 <script>
-  import { onMount } from 'svelte';
+  import { loadCsv, parseCsv, wktToCoords, getRandomColor } from "$lib/utils";
+  import { onMount } from "svelte";
 
+  let schools;
+  let routes;
+
+  let { school } = $props();
   let map;
-  const csvUrl = '/busses.csv'; // path to your CSV file
 
-  // Load CSV file
-  async function loadCsv(url) {
-    const res = await fetch(url);
-    return await res.text();
-  }
-
-  // Parse CSV
-  function parseCsv(text) {
-    const rows = text.trim().split('\n');
-    const header = rows.shift().split(',');
-    return rows.map(row => {
-      const values = row.match(/"([^"]*)"|[^,]+/g).map(v => v.replace(/^"|"$/g,'').trim());
-      const obj = {};
-      header.forEach((h,i) => obj[h.trim()] = values[i]);
-      return obj;
-    });
-  }
-
-  // Convert POINT(lng lat) to [lat, lng]
-  function pointToLatLng(pointStr) {
-    const match = pointStr.match(/POINT \((-?\d+\.?\d*) (-?\d+\.?\d*)\)/);
-    if (!match) return [0,0];
-    const [, lng, lat] = match;
-    return [+lat, +lng];
-  }
+  $effect(() => {
+    if(school && schools) {
+      const found = schools.find(s => s.name === school);
+      if(found && map) {
+        map.setView([found.geo_point.lat, found.geo_point.lon], 17)
+      }
+    }
+  });
 
   onMount(async () => {
-    // Dynamically import Leaflet (runs only in browser)
     const L = (await import('leaflet')).default;
     await import('leaflet/dist/leaflet.css');
+    await import('leaflet.markercluster');
 
-    // Initialize map
-    map = L.map('map').setView([-35.2, 149.1], 13); // Canberra
+    // Initialize map and set origin to Canberra
+    map = L.map('map').setView([-35.2, 149.1], 12);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
-    // Load and parse CSV
-    const csvText = await loadCsv(csvUrl);
-    const routes = parseCsv(csvText);
+    routes = parseCsv(await loadCsv("/routes.csv"));
+    
+    const response = await fetch("/schools.json");
+    schools = await response.json();
+    
+    const markers = L.markerClusterGroup();
 
-    // Plot markers
-    routes.slice(0, 5).forEach(route => {
-      const [lat, lng] = pointToLatLng(route.Location);
-      L.marker([lat, lng])
+    // schools.forEach(school => {
+    //   const marker = L.marker([school.geo_point.lat, school.geo_point.lon])
+    //     .bindPopup(school.name);
+    //   markers.addLayer(marker);
+    // });
+
+    map.addLayer(markers);
+
+    routes.forEach(route => {
+      const lines = wktToCoords(route.the_geom);   // array of line arrays??
+
+      lines.forEach(coords => {
+        L.polyline(coords, { color: getRandomColor(), weight: 5 })
         .addTo(map)
-        .bindPopup(`
-          <strong>Route ${route.RouteNumber}</strong><br/>
-          School: ${route['School Name']}<br/>
-          Start: ${route.StartTime}<br/>
-          Vehicle: ${route.VehicleStyle}
-        `);
+        .bindPopup(route.long_name);
+      });
     });
   });
 </script>
 
-<div
-  id="map"
-  class="card bg-base-100 w-5xl h-[80vh] m-4 md:m-8 p-6 md:p-15 shadow-sm drop-shadow-2xl">
-</div>
+<div id="map" class="card bg-base-100 w-7xl h-[80vh] m-4 md:m-8 p-6 md:p-15 shadow-sm drop-shadow-2xl"/>
