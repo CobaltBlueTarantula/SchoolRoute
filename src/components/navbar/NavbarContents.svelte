@@ -3,8 +3,8 @@
 
   const tabs = [
     { name: 'Home', href: '/' },
-    { name: 'Transport', href: '/transport' },
-    { name: 'Dropoff', href: '/dropoff' }
+    { name: 'Schools', href: '/schools' },
+    { name: 'Transport', href: '/transport' }
   ];
 </script>
 

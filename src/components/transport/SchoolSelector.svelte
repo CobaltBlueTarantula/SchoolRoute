@@ -1,8 +1,9 @@
 <script>
   import { loadCsv, parseCsv } from '$lib/utils';
-  import { onMount } from 'svelte';
+  import { createEventDispatcher, onMount } from "svelte";
 
-  export let value = "";
+  const dispatch = createEventDispatcher();
+
   let schoolNames = [];
 
   onMount(async () => {
@@ -18,7 +19,7 @@
   });
 </script>
 
-<input type="text" class="input" placeholder="Select a school" list="schools" bind:value={value}/>
+<input type="text" class="input" placeholder="Select a school" list="schools" on:input={(e) => dispatch("input", e.target.value)}/>
 <datalist id="schools">
   {#each schoolNames as school}
     <option value={school}></option>

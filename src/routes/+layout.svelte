@@ -37,7 +37,7 @@
           </svg>
         </label>
       </div>
-      <div class="mx-2 flex-1 px-2">Navbar Title</div>
+      <div class="mx-2 flex-1 px-2 font-semibold text-2xl">SchoolRoute</div>
       <div class="hidden flex-none lg:block">
         <ul class="menu menu-horizontal">
           <NavbarContents />
