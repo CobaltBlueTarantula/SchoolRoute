@@ -56,22 +56,3 @@
 </div>
 
 {@render children?.()}
-
-<style>
-  .mask-image-gradient {
-    -webkit-mask-image: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 1) 70%,
-      rgba(0, 0, 0, 0) 100%
-    );
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-size: cover;
-    mask-image: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 1) 70%,
-      rgba(0, 0, 0, 0) 100%
-    );
-    mask-repeat: no-repeat;
-    mask-size: cover;
-  }
-</style>

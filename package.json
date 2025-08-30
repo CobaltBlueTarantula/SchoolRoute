@@ -20,5 +20,8 @@
 		"svelte": "^5.0.0",
 		"tailwindcss": "^4.1.12",
 		"vite": "^7.0.4"
+	},
+	"dependencies": {
+		"gsap": "^3.13.0"
 	}
 }
