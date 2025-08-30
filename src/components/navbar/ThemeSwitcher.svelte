@@ -4,18 +4,21 @@
   let defaultToLight = true;
   let isDark = false;
 
+  const themeDark = "dark";
+  const themeLight = "emerald"
+
   function setTheme(dark) {
     document.documentElement.setAttribute(
       "data-theme",
-      dark ? "dark" : "light"
+      dark ? themeDark : themeLight
     );
     isDark = dark;
-    localStorage.setItem("theme", dark ? "dark" : "light");
+    localStorage.setItem("theme", dark ? themeDark : themeLight);
   }
 
   onMount(() => {
     const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) setTheme(savedTheme === "dark");
+    if (savedTheme) setTheme(savedTheme === themeDark);
     else {
       if (defaultToLight) setTheme(false);
       {
@@ -37,7 +40,7 @@
   });
 </script>
 
-<label class="toggle text-base-content swap-rotate ml-4 mr-2">
+<label class="toggle text-base-content swap-rotate ml-10 mr-10">
   <input
     type="checkbox"
     bind:checked={isDark}

@@ -12,11 +12,12 @@
   <link rel="icon" href={favicon} />
 </svelte:head>
 
-<div class="drawer">
+<div class="drawer fixed top-0 z-500">
   <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
   <div class="drawer-content flex flex-col">
-    <div class="navbar bg-base-300/80 w-full backdrop-blur-md shadow-[0_1px_1px_0_rgba(0,0,0,0.25)]">
-      <div class="flex-none lg:hidden">
+    <div class="w-full h-20 absolute top-0 left-0 z-50 bg-base-100/70 backdrop-blur-xl shadow-[0_0_2px_0_rgba(0,0,0,0.35)]"></div>
+    <div class="navbar w-full h-20 z-501">
+      <div class="flex-none sm:hidden">
         <label
           for="my-drawer-3"
           aria-label="open sidebar"
@@ -40,17 +41,16 @@
       <div class="mx-2 flex-1 px-2 font-semibold text-2xl">SchoolRoute</div>
       <div class="hidden flex-none lg:block">
         <ul class="menu menu-horizontal">
-          <NavbarContents />
+          <NavbarContents isList={false}/>
         </ul>
       </div>
       <ThemeSwitcher />
     </div>
   </div>
   <div class="drawer-side">
-    <label for="my-drawer-3" aria-label="close sidebar" class="drawer-overlay"
-    ></label>
-    <ul class="menu bg-base-200 min-h-full w-80 p-4">
-      <NavbarContents />
+    <label for="my-drawer-3" aria-label="close sidebar" class="drawer-overlay"></label>
+    <ul class="menu bg-base-200 min-h-full w-70 p-4">
+      <NavbarContents isList={true}/>
     </ul>
   </div>
 </div>
