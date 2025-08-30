@@ -13,6 +13,8 @@
   let quoteSection;
   let descriptionSection;
   let mapSection;
+  let progressBar;
+  let progressBar2;
 
   let mapPinOne;
   let mapPinTwo;
@@ -42,12 +44,23 @@
       },
     });
 
+    gsap.to([progressBar, progressBar2], {
+      attr: { value: 100 }, // fill to 100%
+      ease: "none",
+      scrollTrigger: {
+        trigger: descriptionSection,
+        start: "top bottom", // when description enters viewport
+        end: "bottom top", // until it leaves viewport
+        scrub: true, // tie animation to scroll
+      },
+    });
+
     gsap.to(descriptionSection, {
       ease: "back.out(2)",
       scrollTrigger: {
         trigger: descriptionSection,
         start: "center center",
-        end: "+=500",
+        end: "+=400",
         scrub: true,
         pin: true,
         pinSpacing: true,
@@ -79,8 +92,8 @@
     gsap.set([mapPinOne, mapPinTwo, mapPinThree], { scale: 0 });
     // Animate pins
     gsap.to([mapPinOne, mapPinTwo, mapPinThree], {
-      scale: 2, // animate to visible size
-      ease: "back.out(1.7)",
+      scale: 2.5, // animate to visible size
+      ease: "back.out(1)",
       stagger: 0.2,
       scrollTrigger: {
         trigger: mapSection,
@@ -123,11 +136,23 @@
     bind:this={descriptionSection}
     class="px-4 max-w-2xl mx-auto text-center opacity-0"
   >
+    <progress
+      class="progress progress-accent w-full mb-5"
+      value="0"
+      max="100"
+      bind:this={progressBar}
+    ></progress>
     <p class="text-lg sm:text-md md:text-xl w-full">
       Meet <span class="font-bold">SchoolRoute</span>, a web application
       designed to provide students and parents with essential information needed
       to help them decide which route is the best to take.
     </p>
+    <progress
+      class="progress progress-accent w-full mt-5 scale-x-[-1]"
+      value="0"
+      max="100"
+      bind:this={progressBar2}
+    ></progress>
   </div>
 
   <div
@@ -144,7 +169,7 @@
       <img
         src={mapImage}
         alt="Map"
-        class="w-full h-auto object-contain"
+        class="w-full h-auto object-contain border-1 border-accent"
         style="transform: rotateX(30deg) rotateY(-20deg) rotateZ(0deg) scale(1.4); transform-origin: center center; filter: drop-shadow(-10px 30px 10px rgba(0,0,0,0.5));"
       />
 
