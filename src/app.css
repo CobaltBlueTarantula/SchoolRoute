@@ -4,10 +4,11 @@
   themes: light --default, dark --prefersdark;
 }
 
-*,
-*::before,
-*::after {
-  transition-property: background-color, color, border-color, fill, stroke;
-  transition-duration: 0.2s;
-  transition-timing-function: ease-in-out;
+[data-theme='light'] img {
+  transition: .1s all ease-in-out;
+  filter: invert(1) hue-rotate(180deg);
+}
+
+[data-theme='dark'] img {
+  transition: .1s all ease-in-out;
 }
