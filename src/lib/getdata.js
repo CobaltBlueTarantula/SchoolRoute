@@ -1,10 +1,12 @@
+const systemPrompt = "Always answer in rhymes. Today is Thursday"
+
 export async function getData(school, time) {
   const url = "http://api.palmforest.space/v1/chat/completions";
 
   const payload = {
     model: "openai/gpt-oss-20b",
     messages: [
-      { role: "system", content: "Always answer in rhymes. Today is Thursday" },
+      { role: "system", content: systemPrompt },
       { role: "user", content: "What day is it today?" }
     ],
     temperature: 0.7,
