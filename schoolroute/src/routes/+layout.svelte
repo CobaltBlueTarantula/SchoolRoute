@@ -12,7 +12,7 @@
   <link rel="icon" href={favicon} />
 </svelte:head>
 
-<div class="drawer">
+<div class="drawer sticky top-0 left-0 z-9999">
   <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
   <div class="drawer-content flex flex-col">
     <div class="w-full h-20 absolute top-0 left-0 z-50 bg-base-100/70 backdrop-blur-xl shadow-[0_0_2px_0_rgba(0,0,0,0.35)]"></div>

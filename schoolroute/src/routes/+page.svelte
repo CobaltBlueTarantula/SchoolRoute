@@ -92,13 +92,13 @@
     gsap.set([mapPinOne, mapPinTwo, mapPinThree], { scale: 0 });
     // Animate pins
     gsap.to([mapPinOne, mapPinTwo, mapPinThree], {
-      scale: 2.5, // animate to visible size
+      scale: 1.8, // animate to visible size
       ease: "back.out(1)",
       stagger: 0.2,
       scrollTrigger: {
         trigger: mapSection,
         start: "top center-=80",
-        end: "+=500",
+        end: "+=700",
         scrub: true,
       },
     });
@@ -157,20 +157,29 @@
 
   <div
     bind:this={mapSection}
-    class="px-4 max-w-full mx-auto text-center opacity-0 flex flex-row items-center"
+    class="px-4 max-w-full mx-auto text-center opacity-0 flex flex-row items-center bg-base-200"
   >
-    <p class="text-lg sm:text-xl md:text-2xl w-full ml-20">
-      Simple map stuff blah blah etc
+    <p class="text-lg sm:text-xl md:text-2xl w-[50%] ml-40">
+      <span class="text-accent">SchoolRoute</span> is a <span class="font-bold">student-first, data-driven</span>
+      web app that improves school transport by providing
+      <span class="font-bold">real-time and historical insights</span>
+      on bus route
+      <span class="font-bold">reliability, accessibility, and usage</span>. We
+      use an <span class="text-accent">AI chatbot</span> to deliver
+      <span class="font-bold">clear, student-friendly updates</span>
+      to support
+      <span class="text-accent">safer, more predictable, and efficient</span> travel
+      decisions.
     </p>
 
     <div
-      class="w-[50%] opacity-100 ml-10 mr-40 perspective-[1000px] relative flex justify-center items-center"
+      class="w-[50%] opacity-100 ml-10 mr-20 perspective-[1000px] relative flex justify-center items-center"
     >
       <img
         src={mapImage}
         alt="Map"
         class="w-full h-auto object-contain border-1 border-accent"
-        style="transform: rotateX(30deg) rotateY(-20deg) rotateZ(0deg) scale(1.4); transform-origin: center center; filter: drop-shadow(-10px 30px 10px rgba(0,0,0,0.5));"
+        style="transform: rotateX(30deg) rotateY(-20deg) rotateZ(0deg) scale(0.9); transform-origin: center center; filter: drop-shadow(-10px 30px 10px rgba(0,0,0,0.5));"
       />
 
       <!-- Pins -->
@@ -197,8 +206,10 @@
 
   <div class="h-80"></div>
 
-  <div class="w-full h-25 flex justify-center mb-20">
-    <button class="btn btn-xl mt-5.5"><a href="/transport">Take me to the Transport Planner</a></button>
+  <div class="w-full h-25 flex justify-center mb-40">
+    <button class="btn btn-xl mt-5.5"
+      ><a href="/transport">Take me to the Transport Planner</a></button
+    >
   </div>
 
   <footer
@@ -225,12 +236,8 @@
       </p>
     </aside>
     <nav>
-      <h6 class="footer-title">Social</h6>
-      <!-- svelte-ignore a11y_consider_explicit_label -->
-      <!-- svelte-ignore a11y_missing_attribute -->
-      <div class="grid grid-flow-col gap-4">
-        <!-- svelte-ignore a11y_consider_explicit_label -->
-        <!-- svelte-ignore a11y_missing_attribute -->
+      <!--<h6 class="footer-title">Social</h6>
+       <div class="grid grid-flow-col gap-4">
         <a>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -243,8 +250,6 @@
               d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"
             ></path>
           </svg>
-        <!-- svelte-ignore a11y_consider_explicit_label -->
-        <!-- svelte-ignore a11y_consider_explicit_label -->
         </a>
         <a>
           <svg
@@ -272,7 +277,7 @@
             ></path>
           </svg>
         </a>
-      </div>
+      </div> -->
     </nav>
   </footer>
 </div>
