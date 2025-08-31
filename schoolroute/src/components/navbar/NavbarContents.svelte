@@ -5,9 +5,9 @@
   export let isList = false;
 
   const tabs = [
-    { name: 'Home', href: `${base}/` },
-    { name: 'Schools', href: `${base}/schools` },
-    { name: 'Transport', href: `${base}/transport` }
+    { name: "Home", href: `${base}/` },
+    { name: "Schools", href: `${base}/schools` },
+    { name: "Transport", href: `${base}/transport` },
   ];
 </script>
 
@@ -26,7 +26,9 @@
         role="tab"
         href={tab.href}
         class="tab"
-        class:tab-active={$page.url.pathname === tab.href}
+        class:tab-active={tab.href === "/"
+          ? $page.url.pathname === "/"
+          : $page.url.pathname.startsWith(tab.href)}
       >
         {tab.name}
       </a>
