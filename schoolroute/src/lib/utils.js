@@ -43,7 +43,7 @@ In the first sentence of your response you must provide context by saing the bus
 Avoid any styling in your responses.
 `;
 
-export async function sendChatMessage(message) {
+export async function sendRequest(school, route) {
   try {
     const response = await fetch("https://ai-worker.kosta-buntsev.workers.dev/api/chat", {
       method: "POST",
@@ -53,19 +53,19 @@ export async function sendChatMessage(message) {
       body: JSON.stringify({
         messages: [
           { role: "system", content: systemPrompt },
-          { role: "user", content: message }
+          { role: "system", content: `This is the route chosen by the user: ${JSON.stringify(route)}, and this is the school the user wants to analyse this route for: ${JSON.stringify(school)}.`},
+          { role: "user", content: "Asses my chosen route and school and determine if it is a valid choice to get to that school." }
         ]
       }),
     });
 
     if (!response.ok) {
-      throw new Error(`Request failed: ${response.status}`);
+      return `Request failed: ${response.status}`;
     }
 
     const data = await response.json();
     return data.choices[0].message.content;
   } catch (err) {
-    console.error("Error calling chat API:", err);
-    return null;
+    return "Error calling chat API.";
   }
 }

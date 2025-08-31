@@ -42,11 +42,11 @@
 
     schools.forEach(school => {
       const marker = L.marker([school.geo_point.lat, school.geo_point.lon])
-      .on("click", (e) => {
-        selectedSchool = school;
-        dispatch("schoolSelected", school);
-      })
-      .bindPopup(school.name);
+        .on("click", (e) => {
+          selectedSchool = school;
+          dispatch("schoolSelected", school);
+        })
+        .bindPopup(school.name);
       
       markers.addLayer(marker);
     });

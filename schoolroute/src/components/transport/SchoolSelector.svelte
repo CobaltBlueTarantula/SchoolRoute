@@ -10,7 +10,7 @@
 
   onMount(async () => {
     const response = await fetch("/schools.json");
-    const schools = await response.json();
+    const schools = await response.json()
     const schoolSet = new Set();
 
     schools.forEach(school => {

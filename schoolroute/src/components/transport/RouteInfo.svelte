@@ -1,15 +1,21 @@
 <script>
-  import { sendChatMessage } from "$lib/utils";
+  import { sendRequest } from "$lib/utils";
 
   let { selectedRoute, selectedSchool } = $props();
   let responeContent = $state("");
 
+  let currentRequest = 0;
+
   $effect(async () => {
     if (selectedRoute && selectedSchool) {
       responeContent = "";
-      responeContent = await sendChatMessage(
-        `The selected route is: (${selectedRoute.short_name}) ${selectedRoute.long_name}. The selected school is: ${selectedSchool.name}`
-      );
+      const requestId = ++currentRequest;
+      const response = await sendRequest(selectedSchool, selectedRoute);
+
+      // Only update if this is the latest request
+      if (requestId === currentRequest) {
+        responeContent = response;
+      }
     }
   });
 </script>
@@ -31,7 +37,9 @@
     {/if}
   </section>
 {:else}
-  <div class="p-4 bg-yellow-50 border-l-4 border-yellow-400 text-yellow-800 rounded">
+  <div
+    class="p-4 bg-yellow-50 border-l-4 border-yellow-400 text-yellow-800 rounded"
+  >
     <h2 class="font-semibold text-lg mb-2">Please select:</h2>
     <ul class="list-disc ml-6">
       {#if !selectedSchool}

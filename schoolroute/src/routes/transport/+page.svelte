@@ -20,6 +20,7 @@
     const found = schools.find(s => s.name === schoolInput);
     
     if(found) {
+      selectedRoute = undefined;
       selectedSchool = found;
     }
   }
@@ -38,6 +39,7 @@
   </section>
   <section class="md:w-2/3 md:mt-0 mt-32 w-1xl">
     <RouteMap on:schoolSelected={e => {
+      selectedRoute = undefined;
       selectedSchool = e.detail;
       schoolInput = selectedSchool.name;
     }}
