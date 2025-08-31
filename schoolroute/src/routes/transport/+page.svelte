@@ -3,6 +3,7 @@
   import RouteInfo from "../../components/transport/RouteInfo.svelte";
   import RouteMap from "../../components/transport/RouteMap.svelte";
   import SchoolSelector from "../../components/transport/SchoolSelector.svelte";
+  import { base } from "$app/paths";
 
   let selectedSchool = $state();
   let selectedRoute = $state();
@@ -11,7 +12,7 @@
   let schoolInput = $state("");
 
   onMount(async () => {
-    const response = await fetch("/schools.json");
+    const response = await fetch(`${base}/schools.json`);
     schools = await response.json();
   });
   

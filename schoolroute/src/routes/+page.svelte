@@ -7,6 +7,7 @@
   import { onMount } from "svelte";
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { base } from "$app/paths";
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -208,7 +209,7 @@
 
   <div class="w-full h-25 flex justify-center mb-40">
     <button class="btn btn-xl mt-5.5"
-      ><a href="/transport">Take me to the Transport Planner</a></button
+      ><a href="{base}/transport">Take me to the Transport Planner</a></button
     >
   </div>
 

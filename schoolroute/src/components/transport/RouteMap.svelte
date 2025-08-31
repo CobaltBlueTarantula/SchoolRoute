@@ -70,4 +70,4 @@
   });
 </script>
 
-<div id="map" class="card bg-base-100 h-[80vh] m-4 md:m-8 p-6 md:p-15 shadow-sm drop-shadow-2xl"/>
+<div id="map" class="card bg-base-100 h-[80vh] m-4 md:m-8 p-6 md:p-15 shadow-sm drop-shadow-2xl"></div>
