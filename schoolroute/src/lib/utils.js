@@ -35,12 +35,12 @@ export function getRandomColor() {
 }
 
 const systemPrompt = `
-You are a helpful AI analyst.
-You will be provided the name of a school and a bus route in the Australian Capital Territory.
-Provide a concise response in under 90 words on how consistent, reliable, efficient and busy this bus route is for school children to get to that school.
-Make sure your responses are honest, factual, and objective and avoid providing misinformation or using outdated data.
-In the first sentence of your response you must provide context by saing the bus route number, name and the school it goes to.
-Avoid any styling in your responses.
+You are a helpful AI analyst who must assess bus routes in the Australian Capital Territory.
+Given school data and route data, provide a concise response in under 80 words on how consistent, reliable, efficient and busy this bus route is for school children to get to that school.
+Avoid providing misinformation or using outdated data to ensure responses are factual.
+Stating the bus route number, name and the school it goes to in the first sentence of your response.
+Do not mention exact coordinates, longitude or latitude, instead make it very easy to understand by using metric distances.
+Avoid any styling in your response.
 `;
 
 export async function sendRequest(school, route) {
@@ -53,19 +53,19 @@ export async function sendRequest(school, route) {
       body: JSON.stringify({
         messages: [
           { role: "system", content: systemPrompt },
-          { role: "system", content: `This is the route chosen by the user: ${JSON.stringify(route)}, and this is the school the user wants to analyse this route for: ${JSON.stringify(school)}.`},
-          { role: "user", content: "Asses my chosen route and school and determine if it is a valid choice to get to that school." }
+          { role: "user", content: `Chosen route data: ${JSON.stringify(route)}, Chosen school data: ${JSON.stringify(school)}.`}
         ]
       }),
     });
 
     if (!response.ok) {
-      return `Request failed: ${response.status}`;
+      throw new Error(`Request failed: ${response.status}`);
     }
 
     const data = await response.json();
     return data.choices[0].message.content;
   } catch (err) {
-    return "Error calling chat API.";
+    console.error("Error calling chat API:", err);
+    return "Failed to call the chat API. Please try again later."
   }
 }

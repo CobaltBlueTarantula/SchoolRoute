@@ -41,6 +41,14 @@
     
     const markers = L.markerClusterGroup();
 
+    // need to replace default marker images with statically saved copies (funny)
+    delete L.Icon.Default.prototype._getIconUrl;
+    L.Icon.Default.mergeOptions({
+      iconRetinaUrl: `${base}/leaflet/images/marker-icon-2x.png`,
+      iconUrl: `${base}/leaflet/images/marker-icon.png`,
+      shadowUrl: `${base}/leaflet/images/marker-shadow.png`
+    });
+
     schools.forEach(school => {
       const marker = L.marker([school.geo_point.lat, school.geo_point.lon])
         .on("click", (e) => {
