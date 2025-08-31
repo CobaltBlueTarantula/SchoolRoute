@@ -1,4 +1,5 @@
 <script>
+  import { base } from '$app/paths';
   import { loadCsv, parseCsv } from '$lib/utils';
   import { createEventDispatcher, onMount } from "svelte";
 
@@ -9,7 +10,7 @@
   let schoolNames = [];
 
   onMount(async () => {
-    const response = await fetch("/schools.json");
+    const response = await fetch(`${base}/schools.json`);
     const schools = await response.json()
     const schoolSet = new Set();
 

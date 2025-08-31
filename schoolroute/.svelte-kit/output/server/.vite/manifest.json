@@ -10,9 +10,9 @@
       "_paths.js"
     ]
   },
-  "_app.DOV7MI0x.css": {
-    "file": "app/immutable/assets/app.DOV7MI0x.css",
-    "src": "_app.DOV7MI0x.css"
+  "_app.D9XW_Q1O.css": {
+    "file": "app/immutable/assets/app.D9XW_Q1O.css",
+    "src": "_app.D9XW_Q1O.css"
   },
   "_environment.js": {
     "file": "chunks/environment.js",
@@ -132,7 +132,7 @@
       "_paths.js"
     ],
     "css": [
-      "app/immutable/assets/app.DOV7MI0x.css"
+      "app/immutable/assets/app.D9XW_Q1O.css"
     ]
   },
   "src/routes/+layout.ts": {
@@ -151,7 +151,7 @@
     ],
     "css": [
       "app/immutable/assets/_page.rjjtW3E-.css",
-      "app/immutable/assets/app.DOV7MI0x.css"
+      "app/immutable/assets/app.D9XW_Q1O.css"
     ],
     "assets": [
       "app/immutable/assets/map.D9wROxlj.png",

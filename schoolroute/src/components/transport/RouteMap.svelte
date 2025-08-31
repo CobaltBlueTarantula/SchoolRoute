@@ -1,4 +1,5 @@
 <script>
+  import { base } from "$app/paths";
   import { loadCsv, parseCsv, wktToCoords, getRandomColor } from "$lib/utils";
   import { createEventDispatcher, onMount } from "svelte";
 
@@ -33,9 +34,9 @@
       attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
-    routes = parseCsv(await loadCsv("/routes.csv"));
+    routes = parseCsv(await loadCsv(`${base}/routes.csv`));
 
-    const response = await fetch("/schools.json");
+    const response = await fetch(`${base}/schools.json`);
     schools = await response.json();
     
     const markers = L.markerClusterGroup();

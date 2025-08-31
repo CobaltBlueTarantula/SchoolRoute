@@ -18,13 +18,13 @@
 		"@tailwindcss/vite": "^4.0.0",
 		"autoprefixer": "^10.4.21",
 		"daisyui": "^5.0.54",
-		"gh-pages": "^6.3.0",
 		"postcss": "^8.5.6",
 		"svelte": "^5.0.0",
 		"tailwindcss": "^4.1.12",
 		"vite": "^7.0.4"
 	},
 	"dependencies": {
+		"gh-pages": "^6.3.0",
 		"gsap": "^3.13.0",
 		"leaflet": "^1.9.4",
 		"leaflet.markercluster": "^1.5.3"

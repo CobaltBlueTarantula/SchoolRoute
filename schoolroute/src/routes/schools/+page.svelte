@@ -1,4 +1,5 @@
 <script>
+  import { base } from "$app/paths";
   import { loadCsv, parseCsv } from "$lib/utils";
   import { onMount } from "svelte";
 
@@ -7,7 +8,7 @@
   let searchQuery = "";
 
   onMount(async () => {
-    const routes = await loadCsv("/school_routes.csv");
+    const routes = await loadCsv(`${base}/school_routes.csv`);
 
     // Manually set because funny
     columnNames = ["RouteNumber", "Description", "School Name", "StartTime", "Address", "Phone"];

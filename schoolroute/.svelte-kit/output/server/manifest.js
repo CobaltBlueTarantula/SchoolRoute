@@ -10,7 +10,7 @@ return {
 	assets: new Set(["robots.txt","routes.csv","schools.json","school_routes.csv"]),
 	mimeTypes: {".txt":"text/plain",".csv":"text/csv",".json":"application/json"},
 	_: {
-		client: {start:"app/immutable/entry/start.zGhMTNWb.js",app:"app/immutable/entry/app.CMLPzdNH.js",imports:["app/immutable/entry/start.zGhMTNWb.js","app/immutable/chunks/CGZHe3Ay.js","app/immutable/chunks/h7MUBmDw.js","app/immutable/chunks/CI4LmiiB.js","app/immutable/entry/app.CMLPzdNH.js","app/immutable/chunks/D9Z9MdNV.js","app/immutable/chunks/h7MUBmDw.js","app/immutable/chunks/DsnmJJEf.js","app/immutable/chunks/CfDQ-aYo.js","app/immutable/chunks/n0tuFE5V.js","app/immutable/chunks/r0bgQIrM.js","app/immutable/chunks/CI4LmiiB.js"],stylesheets:[],fonts:[],uses_env_dynamic_public:false},
+		client: {start:"app/immutable/entry/start.DDyKRYmk.js",app:"app/immutable/entry/app._Q936CNu.js",imports:["app/immutable/entry/start.DDyKRYmk.js","app/immutable/chunks/BhWAdnLe.js","app/immutable/chunks/h7MUBmDw.js","app/immutable/chunks/CI4LmiiB.js","app/immutable/chunks/C9FoD9as.js","app/immutable/entry/app._Q936CNu.js","app/immutable/chunks/D9Z9MdNV.js","app/immutable/chunks/h7MUBmDw.js","app/immutable/chunks/DsnmJJEf.js","app/immutable/chunks/CfDQ-aYo.js","app/immutable/chunks/n0tuFE5V.js","app/immutable/chunks/r0bgQIrM.js","app/immutable/chunks/CI4LmiiB.js"],stylesheets:[],fonts:[],uses_env_dynamic_public:false},
 		nodes: [
 			__memo(() => import('./nodes/0.js')),
 			__memo(() => import('./nodes/1.js'))
