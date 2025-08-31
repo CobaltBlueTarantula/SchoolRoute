@@ -2,19 +2,27 @@
   import { loadCsv, parseCsv } from "$lib/utils";
   import { onMount } from "svelte";
 
-  let columnNames = $state([]);
-  let schoolRoutes = $state([]);
+  let columnNames = [];
+  let schoolRoutes = [];
+  let searchQuery = "";
 
   onMount(async () => {
     const routes = await loadCsv("/school_routes.csv");
 
-    // columnNames = routes.split("\n")[0].split(",").filter(col => col !== "Website" && col !== "Location"); // remove fields the user doesnt need
     // Manually set because funny
-    columnNames = ["RouteNumber", "Description", "School Name", "StartTime", "Address", "Phone"]
+    columnNames = ["RouteNumber", "Description", "School Name", "StartTime", "Address", "Phone"];
 
     schoolRoutes = parseCsv(routes);
+  });
 
-    console.log(schoolRoutes[0])
+  // reactive filtered list
+  let filteredRoutes = [];
+  $: filteredRoutes = schoolRoutes.filter(route => {
+    if (!searchQuery) return true;
+    const query = searchQuery.toLowerCase();
+    return columnNames.some(col =>
+      (route[col] || "").toLowerCase().includes(query)
+    );
   });
 </script>
 
@@ -31,7 +39,17 @@
 {/snippet}
 
 <div class="card p-8 m-8 shadow-sm drop-shadow-3xl">
-  <h1 class="font-semibold text-2xl pb-8">School Bus Services</h1>
+  <h1 class="font-semibold text-2xl pb-4">School Bus Services</h1>
+
+  <!-- Search bar -->
+  <div class="pb-6">
+    <input
+      type="text"
+      placeholder="Search routes, schools, addresses..."
+      bind:value={searchQuery}
+      class="input input-bordered w-full max-w-lg"
+    />
+  </div>
 
   <div class="overflow-x-auto">
     <table class="table table-xs">
@@ -43,9 +61,17 @@
         </tr>
       </thead>
       <tbody>
-        {#each schoolRoutes as route}
-          {@render routeRow(route)}
-        {/each}
+        {#if filteredRoutes.length > 0}
+          {#each filteredRoutes as route}
+            {@render routeRow(route)}
+          {/each}
+        {:else}
+          <tr>
+            <td colspan={columnNames.length} class="text-center text-gray-500 py-4">
+              No routes found
+            </td>
+          </tr>
+        {/if}
       </tbody>
     </table>
   </div>

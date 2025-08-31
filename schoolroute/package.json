@@ -22,8 +22,8 @@
 		"vite": "^7.0.4"
 	},
 	"dependencies": {
+		"gsap": "^3.13.0",
 		"leaflet": "^1.9.4",
-		"leaflet.markercluster": "^1.5.3",
-		"gsap": "^3.13.0"
+		"leaflet.markercluster": "^1.5.3"
 	}
 }
