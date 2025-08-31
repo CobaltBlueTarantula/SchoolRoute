@@ -8,7 +8,7 @@
   let selectedRoute = $state();
 
   let schools = [];
-  let schoolInput = "";
+  let schoolInput = $state("");
 
   onMount(async () => {
     const response = await fetch("/schools.json");
@@ -30,17 +30,19 @@
     <div class="mb-10 shadow-sm drop-shadow-2xl m-4 md:m-8 p-6 md:p-10 card bg-base-100">
       <h1 class="font-semibold text-2xl pb-6">Public Transport Services</h1>
       <h2 class="pb-3">Search Schools</h2>
-      <SchoolSelector on:input={handleSchoolInput}/>
+      <SchoolSelector value={schoolInput} on:input={handleSchoolInput}/>
     </div>
     <div class="mb-10 shadow-sm drop-shadow-2xl m-4 md:m-8 p-6 md:p-10 card bg-base-100">
-      {#if (selectedRoute)}
-        <RouteInfo route={selectedRoute}/>
-      {:else}
-        <h2 >Select a route on the map to analyse it.</h2>
-      {/if}
+      <RouteInfo {selectedRoute} {selectedSchool}/>
     </div>
   </section>
-  <section class="md:w-2/3 w-1xl">
-    <RouteMap on:schoolSelected={e => selectedSchool = e.detail} on:routeSelected={e => selectedRoute = e.detail} selectedSchool={selectedSchool}/>
+  <section class="md:w-2/3 md:mt-0 mt-32 w-1xl">
+    <RouteMap on:schoolSelected={e => {
+      selectedSchool = e.detail;
+      schoolInput = selectedSchool.name;
+    }}
+    on:routeSelected={e => 
+      selectedRoute = e.detail
+    } {selectedSchool}/>
   </section>
 </div>

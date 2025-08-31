@@ -7,7 +7,11 @@
 
   onMount(async () => {
     const routes = await loadCsv("/school_routes.csv");
-    columnNames = routes.split("\n")[0].split(",").filter(col => col !== "Website"); // no website because its useless
+
+    // columnNames = routes.split("\n")[0].split(",").filter(col => col !== "Website" && col !== "Location"); // remove fields the user doesnt need
+    // Manually set because funny
+    columnNames = ["RouteNumber", "Description", "School Name", "StartTime", "Address", "Phone"]
+
     schoolRoutes = parseCsv(routes);
 
     console.log(schoolRoutes[0])

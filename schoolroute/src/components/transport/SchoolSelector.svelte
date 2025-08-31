@@ -4,6 +4,8 @@
 
   const dispatch = createEventDispatcher();
 
+  export let value = "";
+
   let schoolNames = [];
 
   onMount(async () => {
@@ -19,7 +21,7 @@
   });
 </script>
 
-<input type="text" class="input" placeholder="Select a school" list="schools" on:input={(e) => dispatch("input", e.target.value)}/>
+<input type="text" class="input" placeholder="Select a school" list="schools" bind:value={value} on:input={(e) => dispatch("input", e.target.value)}/>
 <datalist id="schools">
   {#each schoolNames as school}
     <option value={school}></option>

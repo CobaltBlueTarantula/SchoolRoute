@@ -16,8 +16,6 @@
     if(selectedSchool && schools) {
       const found = schools.find(s => s.name == selectedSchool.name);
 
-      console.log("selected a school")
-
       if(found) {
         map.setView([found.geo_point.lat, found.geo_point.lon], 17)
       }
