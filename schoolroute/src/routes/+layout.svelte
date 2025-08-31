@@ -1,6 +1,6 @@
 <script>
   import "../app.css";
-  import favicon from "$lib/assets/favicon.svg";
+  import favicon from "$lib/assets/favicon.png";
 
   import ThemeSwitcher from "../components/navbar/ThemeSwitcher.svelte";
   import NavbarContents from "../components/navbar/NavbarContents.svelte";
