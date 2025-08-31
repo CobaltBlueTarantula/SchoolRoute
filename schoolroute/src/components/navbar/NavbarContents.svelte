@@ -1,12 +1,13 @@
 <script>
   import { page } from "$app/stores";
+  import { base } from "$app/paths";
+
   export let isList = false;
 
   const tabs = [
-    { name: 'Home', href: '/' },
-    { name: 'Schools', href: '/schools' },
-    { name: 'Transport', href: '/transport' },
-    { name: 'About', href: '/about' }
+    { name: 'Home', href: `${base}/` },
+    { name: 'Schools', href: `${base}/schools` },
+    { name: 'Transport', href: `${base}/transport` }
   ];
 </script>
 
