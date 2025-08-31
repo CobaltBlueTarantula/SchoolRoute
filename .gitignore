@@ -167,3 +167,4 @@ dist
 .wrangler/
 
 schoolroute/.svelte-kit
+schoolroute/build
